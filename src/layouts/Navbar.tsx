@@ -37,11 +37,21 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to="/" className="btn btn-ghost normal-case text-xl">
-          Book Category
+          Book Store
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+        {/* <ul className="menu menu-horizontal px-1">
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/books">All Books</Link>
+          </li>
+        </ul> */}
+      </div>
+      <div className="navbar-end">
+        <ul className="menu menu-horizontal hidden lg:flex">
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -49,14 +59,9 @@ const Navbar = () => {
             <Link to="/books">All Books</Link>
           </li>
           <li>
-            <Link to="/add-new-book">Add Books</Link>
+            <Link to="/login">Login</Link>
           </li>
         </ul>
-      </div>
-      <div className="navbar-end">
-        <Link to="/signup" className="btn">
-          Signup
-        </Link>
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
@@ -75,6 +80,9 @@ const Navbar = () => {
             </li>
             <li>
               <a>Settings</a>
+            </li>
+            <li>
+              <Link to="/add-new-book">Add Books</Link>
             </li>
             <li>
               <a>Logout</a>

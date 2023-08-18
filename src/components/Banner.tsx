@@ -6,7 +6,7 @@ const Banner = () => {
       className="hero min-h-[80vh] min-w-[98.5vw]"
       style={{
         backgroundImage:
-          "url(https://wordsrated.com/wp-content/uploads/2022/02/Number-of-Books-Published-Per-Year.jpg)",
+          "url('https://img.freepik.com/free-photo/cafe-frankfurt-germany_1268-20912.jpg?w=740&t=st=1692340800~exp=1692341400~hmac=2306d65f5d0adbc7577c1d968bc51a3bb4a43454699fd64e78b8f6d76416e101')",
       }}
     >
       <div className="hero-overlay bg-opacity-60"></div>
