@@ -28,6 +28,11 @@ const authApi = api.injectEndpoints({
         body: { id, book },
       }),
     }),
+    getSingleUser: builder.query({
+      query: (id: string) => ({
+        url: `/auth/user/${id}`,
+      }),
+    }),
   }),
 });
 
@@ -35,4 +40,5 @@ export const {
   useCreateUserMutation,
   useLoginUserMutation,
   useAddToWishListMutation,
+  useGetSingleUserQuery,
 } = authApi;
