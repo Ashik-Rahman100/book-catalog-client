@@ -33,6 +33,11 @@ const authApi = api.injectEndpoints({
         url: `/auth/user/${id}`,
       }),
     }),
+    getWishList: builder.query({
+      query: (id: string) => ({
+        url: `/auth/wishList/${id}`,
+      }),
+    }),
   }),
 });
 
@@ -41,4 +46,5 @@ export const {
   useLoginUserMutation,
   useAddToWishListMutation,
   useGetSingleUserQuery,
+  useGetWishListQuery,
 } = authApi;
