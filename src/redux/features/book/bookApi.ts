@@ -23,7 +23,7 @@ const bookApi = api.injectEndpoints({
     }),
     getAllBooks: builder.query({
       query: (params: IGetAllBookParams) => {
-        let queryString = `/books`;
+        let queryString = `/books/`;
         let added = false;
 
         if (params.searchTerm) {
@@ -31,27 +31,27 @@ const bookApi = api.injectEndpoints({
           added = true;
         }
         if (params.publishedAt && added === true) {
-          queryString += `&publishedAt${params.publishedAt}`;
+          queryString += `&publishedAt=${params.publishedAt}`;
         } else if (params.publishedAt && added === false) {
           queryString += `?publishedAt=${params.publishedAt}`;
           added = true;
         }
         if (params.title && added === true) {
-          queryString += `&title${params.title}`;
+          queryString += `&title=${params.title}`;
         } else if (params.title && added === false) {
-          queryString += `?title${params.title}`;
+          queryString += `?title=${params.title}`;
           added = true;
         }
         if (params.author && added === true) {
-          queryString += `&author${params.author}`;
-        } else if (params.title && added === false) {
-          queryString += `?author${params.author}`;
+          queryString += `&author=${params.author}`;
+        } else if (params.author && added === false) {
+          queryString += `?author=${params.author}`;
           added = true;
         }
         if (params.genre && added === true) {
-          queryString += `&genre${params.genre}`;
-        } else if (params.title && added === false) {
-          queryString += `?author${params.genre}`;
+          queryString += `&genre=${params.genre}`;
+        } else if (params.genre && added === false) {
+          queryString += `?genre=${params.genre}`;
           added = true;
         }
         return queryString;
