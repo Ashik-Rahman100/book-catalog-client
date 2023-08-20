@@ -38,6 +38,13 @@ const authApi = api.injectEndpoints({
         url: `/auth/wishList/${id}`,
       }),
     }),
+    removeWishList: builder.query({
+      query: ({ id, book }: { id: string; book: IBook }) => ({
+        url: `/auth/remove-wish/${id}`,
+        method: "PATCH",
+        body: book,
+      }),
+    }),
   }),
 });
 
@@ -47,4 +54,5 @@ export const {
   useAddToWishListMutation,
   useGetSingleUserQuery,
   useGetWishListQuery,
+  useRemoveWishListQuery,
 } = authApi;
