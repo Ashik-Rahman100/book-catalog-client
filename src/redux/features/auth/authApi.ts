@@ -22,10 +22,10 @@ const authApi = api.injectEndpoints({
       }),
     }),
     addToWishList: builder.mutation({
-      query: ({ id, book }: { id: string; book: IBook }) => ({
-        url: `/auth/add-to-wish/${id}`,
+      query: ({ _id, book }: { _id: string; book: IBook }) => ({
+        url: `/auth/add-to-wish/${_id}`,
         method: "PATCH",
-        body: { id, book },
+        body: { _id, book },
       }),
     }),
     getSingleUser: builder.query({
@@ -38,11 +38,11 @@ const authApi = api.injectEndpoints({
         url: `/auth/wishList/${id}`,
       }),
     }),
-    removeWishList: builder.query({
-      query: ({ id, book }: { id: string; book: IBook }) => ({
-        url: `/auth/remove-wish/${id}`,
+    removeWishList: builder.mutation({
+      query: ({ _id, bookId }: { _id: string; bookId: string }) => ({
+        url: `/auth/remove-wish/${_id}`,
         method: "PATCH",
-        body: book,
+        body: bookId,
       }),
     }),
   }),
@@ -54,5 +54,5 @@ export const {
   useAddToWishListMutation,
   useGetSingleUserQuery,
   useGetWishListQuery,
-  useRemoveWishListQuery,
+  useRemoveWishListMutation,
 } = authApi;
