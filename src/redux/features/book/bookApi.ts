@@ -17,7 +17,7 @@ const bookApi = api.injectEndpoints({
       }),
     }),
     getSingleBook: builder.query({
-      query: (id: string) => ({
+      query: (id: string | undefined) => ({
         url: `/books/${id}`,
       }),
     }),
@@ -65,20 +65,20 @@ const bookApi = api.injectEndpoints({
       }),
     }),
     editBook: builder.mutation({
-      query: ({ id, ...body }: { id: string; body: Inputs }) => ({
+      query: ({ id, ...body }: { id: string | undefined; body: Inputs }) => ({
         url: `/books/${id}`,
         method: "PATCH",
         body: body,
       }),
     }),
     deleteBook: builder.mutation({
-      query: ({ id }: { id: string }) => ({
+      query: ({ id }: { id: string | undefined }) => ({
         url: `/books/${id}`,
         method: "DELETE",
       }),
     }),
     addReview: builder.mutation({
-      query: ({ id, review }: { id: string; review: IReview }) => ({
+      query: ({ id, review }: { id: string | undefined; review: IReview }) => ({
         url: `/books/addReview/${id}`,
         method: "POST",
         body: review,

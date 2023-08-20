@@ -47,3 +47,21 @@ export type Inputs = {
   publishedAt: string;
   genre: string;
 };
+export type IUser = {
+  email: string;
+  password: string;
+  wishlist?: IBook[];
+  _id: string;
+};
+export type IUserApiData = {
+  email: string;
+  password: string;
+  _id: string;
+};
+export type IBookFilters = {
+  title?: string;
+  author?: string;
+  genre?: string;
+  publishedAt?: string;
+  searchTerm?: string;
+};
