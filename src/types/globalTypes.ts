@@ -23,7 +23,7 @@ export type BookGenre =
   | "Young Adult";
 
 export type IReview = {
-  rating: number;
+  rating?: number;
   reviewText: string;
   reviewer: string;
 };

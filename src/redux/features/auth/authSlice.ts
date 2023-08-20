@@ -30,6 +30,10 @@ const authSlice = createSlice({
       const { user, accessToken } = action.payload;
       (state.user = user), (state.token = accessToken);
     },
+    logOut: (state) => {
+      state.user = null;
+      state.token = null;
+    },
   },
 });
 

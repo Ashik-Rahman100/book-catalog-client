@@ -17,13 +17,10 @@ const BookCard = ({ book }: IProps) => {
       </figure>
       <div className="card-body">
         <h2 className="card-title">{book.title}</h2>
-        <div className="flex ">
-          <div>
-            <p>Author: {book.author}</p>
-            <p>Genre: {book.genre}</p>
-          </div>
-          <p className="ml-4 badge badge-secondary">{book.publishedAt}</p>
-        </div>
+        <p className="ml-1 badge badge-primary">{book.genre}</p>
+        <p className="font-thin my-2">Publised At : {book.publishedAt}</p>
+
+        <p>Author: {book.author}</p>
 
         <div className="card-actions justify-end"></div>
       </div>

@@ -1,10 +1,28 @@
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import Lodader from "../components/shared/Lodader";
+import { useCreateUserMutation } from "../redux/features/auth/authApi";
 import { IUser } from "../types/globalTypes";
 
 const Signup = () => {
   const { register, handleSubmit } = useForm<IUser>();
+  const createUserMutaion = useCreateUserMutation();
+  const [createUser, { isLoading }] = createUserMutaion;
+  if (isLoading) {
+    return <Lodader />;
+  }
 
-  const handleSubmitData = async () => {};
+  const handleSubmitData = async (data: IUser) => {
+    try {
+      await createUser(data);
+      toast.success("User Created");
+      localStorage.setItem("user", JSON.stringify(data.email));
+      window.location.href = "/";
+    } catch (error) {
+      toast.error("Something went wrong.");
+    }
+  };
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -38,11 +56,20 @@ const Signup = () => {
                 />
               </div>
               <div className="form-control mt-6">
-                <button type="submit" className="btn btn-primary">
-                  Sign Up
+                <button type="submit" className="btn btn-primary ">
+                  Signup
                 </button>
               </div>
             </form>
+            <p className="pt-8">
+              If you haven an account please
+              <Link
+                className="underline underline-offset-4 hover:text-pink pl-2 text-primary"
+                to="/login"
+              >
+                Login
+              </Link>
+            </p>
           </div>
         </div>
         <div className="text-center w-2/4 lg:text-left">
