@@ -25,6 +25,7 @@ const SingleBook = () => {
 
   // delete book
   const onDelete = async () => {
+    window.confirm("Are You Sure? You want to delete");
     await deleteBook({ id: id });
     navigate("/");
   };

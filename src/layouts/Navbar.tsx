@@ -1,8 +1,16 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("user"));
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setIsLoggedIn(false);
+  };
+
   return (
-    <div className="navbar bg-primary text-primary-content">
+    <div className="navbar shadow-lg ">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -23,72 +31,87 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-primary text-primary-content w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow  rounded-box w-52"
           >
             <li>
-              <Link to="/">Home</Link>
+              <Link className="font-semibold" to="/">
+                Home
+              </Link>
             </li>
             <li>
-              <Link to="/books">All Books</Link>
+              <Link className="font-semibold" to="/books">
+                Books
+              </Link>
             </li>
             <li>
-              <Link to="/login">Login</Link>
+              <Link className="font-semibold" to="/wishlist">
+                WishList
+              </Link>
             </li>
+            {!isLoggedIn ? (
+              <li>
+                <Link className="font-semibold" to="/login">
+                  Login
+                </Link>
+              </li>
+            ) : (
+              <>
+                <li>
+                  <Link className="font-semibold" to="/book/addBook">
+                    Add Book
+                  </Link>
+                </li>
+                <li>
+                  <button className="font-semibold" onClick={handleLogout}>
+                    Logout
+                  </button>
+                </li>
+              </>
+            )}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost normal-case text-xl">
-          Book Store
+        <Link to="/" className=" text-2xl font-bold ps-3">
+          Book Catalog
         </Link>
       </div>
-      <div className="navbar-center hidden lg:flex">
-        {/* <ul className="menu menu-horizontal px-1">
+      <div className="navbar-end hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">
           <li>
-            <Link to="/">Home</Link>
+            <Link className="font-semibold" to="/">
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/books">All Books</Link>
-          </li>
-        </ul> */}
-      </div>
-      <div className="navbar-end">
-        <ul className="menu menu-horizontal hidden lg:flex">
-          <li>
-            <Link to="/">Home</Link>
+            <Link className="font-semibold" to="/books">
+              Books
+            </Link>
           </li>
           <li>
-            <Link to="/books">All Books</Link>
+            <Link className="font-semibold" to="/wishlist">
+              WishList
+            </Link>
           </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
+          {!isLoggedIn ? (
+            <li>
+              <Link className="font-semibold" to="/login">
+                Login
+              </Link>
+            </li>
+          ) : (
+            <>
+              <li>
+                <Link className="font-semibold" to="/book/addBook">
+                  Add Book
+                </Link>
+              </li>
+              <li>
+                <button className="font-semibold" onClick={handleLogout}>
+                  Logout
+                </button>
+              </li>
+            </>
+          )}
         </ul>
-        <div className="dropdown dropdown-end">
-          <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
-              <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-            </div>
-          </label>
-          <ul
-            tabIndex={0}
-            className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-primary text-primary-content w-52"
-          >
-            <li>
-              <a className="justify-between">
-                Profile
-                <span className="badge">New</span>
-              </a>
-            </li>
-            <li>
-              <a>Settings</a>
-            </li>
-            <li>
-              <Link to="/add-new-book">Add Books</Link>
-            </li>
-            <li>
-              <a>Logout</a>
-            </li>
-          </ul>
-        </div>
       </div>
     </div>
   );
