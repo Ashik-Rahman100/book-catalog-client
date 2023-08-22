@@ -1,9 +1,9 @@
-import { useGetRecentBooksQuery } from "../redux/features/book/bookApi";
+import { useGetRecentBookQuery } from "../redux/features/book/bookApi";
 import { IBook } from "../types/globalTypes";
 import BookCard from "./ui/BookCard";
 
 const RecentBooks = () => {
-  const { data } = useGetRecentBooksQuery(undefined);
+  const { data } = useGetRecentBookQuery(undefined);
   const recentBooksData = data?.data?.slice(0, 3);
 
   return (
