@@ -43,11 +43,7 @@ const Navbar = () => {
                 Books
               </Link>
             </li>
-            <li>
-              <Link className="font-semibold" to="/wishlist">
-                WishList
-              </Link>
-            </li>
+
             {!isLoggedIn ? (
               <li>
                 <Link className="font-semibold" to="/login">
@@ -56,6 +52,11 @@ const Navbar = () => {
               </li>
             ) : (
               <>
+                <li>
+                  <Link className="font-semibold" to="/wishlist">
+                    WishList
+                  </Link>
+                </li>
                 <li>
                   <Link className="font-semibold" to="/book/addBook">
                     Add Book
@@ -86,19 +87,22 @@ const Navbar = () => {
               Books
             </Link>
           </li>
-          <li>
-            <Link className="font-semibold" to="/wishlist">
-              WishList
-            </Link>
-          </li>
+
           {!isLoggedIn ? (
-            <li>
-              <Link className="font-semibold" to="/login">
-                Login
-              </Link>
-            </li>
+            <>
+              <li>
+                <Link className="font-semibold" to="/login">
+                  Login
+                </Link>
+              </li>
+            </>
           ) : (
             <>
+              <li>
+                <Link className="font-semibold" to="/wishlist">
+                  WishList
+                </Link>
+              </li>
               <li>
                 <Link className="font-semibold" to="/book/addBook">
                   Add Book

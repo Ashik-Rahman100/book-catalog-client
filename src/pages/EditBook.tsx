@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Lodader from "../components/shared/Lodader";
 import {
@@ -12,6 +12,7 @@ import { Inputs } from "../types/globalTypes";
 const EditBook = () => {
   const { register, handleSubmit, setValue } = useForm<Inputs>();
   const [editBook] = useEditBookMutation();
+  const navigate = useNavigate();
   const { id } = useParams();
   const { data, isLoading } = useGetSingleBookQuery(id);
 
@@ -30,6 +31,7 @@ const EditBook = () => {
     await editBook({ body: data, id: id });
 
     toast.success("Book Edited!");
+    navigate("/");
   };
   if (isLoading) {
     return <Lodader />;

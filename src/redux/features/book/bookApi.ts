@@ -59,13 +59,13 @@ const bookApi = api.injectEndpoints({
     }),
     createBook: builder.mutation({
       query: (book: Inputs) => ({
-        url: `/books/add-book/${book}`,
+        url: `/books/add-book`,
         method: "POST",
         body: book,
       }),
     }),
     editBook: builder.mutation({
-      query: ({ id, ...body }: { id: string | undefined; body: Inputs }) => ({
+      query: ({ id, body }: { id: string | undefined; body: Inputs }) => ({
         url: `/books/${id}`,
         method: "PATCH",
         body: body,

@@ -91,7 +91,7 @@ const AllBooks = () => {
         />
       </div>
       <h2 className="text-4xl text-center my-8 font-bold">All Books</h2>
-      <div className="grid sm:grid-cols-1 sm:mx-2  md:grid-cols-4 items-center">
+      <div className="grid sm:grid-cols-1  md:grid-cols-3  items-center">
         {data?.data?.map((book: IBook) => (
           <BookCard key={book._id} book={book}></BookCard>
         ))}

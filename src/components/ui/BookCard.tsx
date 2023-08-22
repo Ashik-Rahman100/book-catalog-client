@@ -57,9 +57,9 @@ const BookCard: React.FC<BookCardProps> = ({ book }) => {
   // }
 
   return (
-    <div className="card bg-base-100 shadow-xl">
+    <div className="card bg-base-100 shadow-xl w-96 h-[450px] m-2">
       <figure>
-        <img src={book.image} alt="Shoes" />
+        <img src={book.image} alt="Book Picture" />
       </figure>
       <div className="card-body">
         <div className="badge badge-outline badge-accent font-semibold">

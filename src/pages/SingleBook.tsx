@@ -25,9 +25,11 @@ const SingleBook = () => {
 
   // delete book
   const onDelete = async () => {
-    window.confirm("Are You Sure? You want to delete");
-    await deleteBook({ id: id });
-    navigate("/");
+    const isExist = window.confirm("Are You Sure? You want to delete");
+    if (isExist) {
+      await deleteBook({ id: id });
+      navigate("/");
+    }
   };
 
   const onSubmit: SubmitHandler<Inputs> = async (data: IReview) => {

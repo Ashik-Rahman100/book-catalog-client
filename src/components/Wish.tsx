@@ -5,9 +5,9 @@ import {
   useGetSingleUserQuery,
   useRemoveWishListMutation,
 } from "../redux/features/auth/authApi";
-import { IUser } from "../types/globalTypes";
+import { IBook, IUser } from "../types/globalTypes";
 
-const Wish = ({ book }: { book: any }) => {
+const Wish = ({ book }: { book: IBook }) => {
   const user = localStorage.getItem("user");
   const user1 = user?.substring(1, user.length - 1);
   const [currentUser, setCurrentUser] = useState<IUser | null>(null);
@@ -30,7 +30,7 @@ const Wish = ({ book }: { book: any }) => {
   const onDelete = async () => {
     await removeWishList({ _id: userId, bookId: book._id });
     toast.success("Finished Reading Book");
-    window.location.reload();
+    // window.location.reload();
   };
 
   return (

@@ -11,6 +11,7 @@ const AddBook = () => {
     await createBook(data);
     console.log(data);
     toast.success("Book Created!");
+    // window.location.reload();
   };
   return (
     <div className="px-12">
